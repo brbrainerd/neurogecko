@@ -17,6 +17,18 @@ To create a new presentation:
 3. Compose slides using the `Spectacle` framework.
 4. Customize the theme in `src/app/globals.css` or via the Spectacle theme object.
 
+## Architecture Verification (SOTA Q4 2025)
+
+| Component | Status | Details |
+| :--- | :--- | :--- |
+| **Next.js 15 (App Router)** | ✅ Implemented | Project root and routing configured. |
+| **Spectacle 11.x** | ✅ Implemented | `Deck` and `Slide` components in use. |
+| **Niivue (react-niivue)** | ✅ Implemented | `SafeBrain` wrapper handles WebGL context. |
+| **Convex Backend** | ✅ Implemented | Real-time polling functional (schema & mutations). |
+| **Security Headers** | ✅ Implemented | COOP/COEP configured in `next.config.ts` and `vercel.json`. |
+| **Automated Testing** | 🚧 In Progress | Unit and E2E suites being added. |
+| **Vercel Blob Storage** | ❌ Pending | Currently using external URLs for NIfTI files. Recommendation: Migrate to Cloudflare R2 for cost/perf. |
+
 ## Long-term Storage Strategy
 
 For a production-grade deployment, especially when dealing with large neuroimaging datasets (NIfTI, DICOM) which can exceed hundreds of megabytes, storing files directly in the repository or Vercel blob storage may not be cost-effective or performant.
@@ -37,4 +49,3 @@ We recommend **Cloudflare R2** (or AWS S3 compatible storage) for the following 
 
 ### Current State
 The demo currently uses public URLs for sample data. For persistent user data (like poll results), we use **Convex**, which offers a seamless real-time database experience with built-in caching and subscription support.
-

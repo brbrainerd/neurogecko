@@ -7,4 +7,3 @@ export default defineSchema({
     count: v.number(),
   }),
 });
-
