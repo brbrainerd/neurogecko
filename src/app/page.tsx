@@ -1,65 +1,193 @@
-import Image from "next/image";
+'use client';
 
-export default function Home() {
+import { 
+  Deck, 
+  Slide, 
+  Heading, 
+  Text, 
+  FlexBox, 
+  Box, 
+  FullScreen, 
+  Progress, 
+  UnorderedList, 
+  ListItem, 
+  Appear, 
+  CodePane,
+  Image
+} from 'spectacle';
+import { SafeBrain } from '@/components/SafeBrain';
+import { Mermaid } from '@/components/Mermaid';
+import { DataChart } from '@/components/DataChart';
+import { Poll } from '@/components/Poll';
+import { LiveCode } from '@/components/LiveCode';
+import React from 'react';
+
+// Custom Dark Neuroscience Theme
+const theme = {
+  colors: {
+    primary: '#f1f5f9',    // Text (Slate 100)
+    secondary: '#0f172a',  // Background (Slate 900)
+    tertiary: '#38bdf8',   // Accents (Sky 400)
+    quaternary: '#94a3b8', // Muted text
+  },
+  fonts: {
+    header: 'var(--font-sans), sans-serif',
+    text: 'var(--font-sans), sans-serif',
+    monospace: 'var(--font-mono), monospace',
+  },
+  fontSizes: {
+    h1: '72px',
+    h2: '56px',
+    h3: '40px',
+    text: '28px',
+    monospace: '24px',
+  }
+};
+
+// Template for Footer/Header on every slide
+const template = () => (
+  <FlexBox justifyContent="space-between" position="absolute" bottom={0} width={1} padding={2}>
+    <Box padding="0 1em">
+      <FullScreen color="#38bdf8" />
+    </Box>
+    <Box padding="1em">
+      <Progress color="#38bdf8" />
+    </Box>
+  </FlexBox>
+);
+
+export default function Presentation() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
+    <Deck theme={theme} template={template} transition={{ duration: 500 }}>
+      
+      {/* Slide 1: Title */}
+      <Slide backgroundColor="secondary">
+        <FlexBox height="100%" flexDirection="column" alignItems="center" justifyContent="center">
+          <Heading fontSize="h1" color="tertiary">Neural Dynamics</Heading>
+          <Text color="primary" fontSize="h3">Q4 2025 Research Review</Text>
+          <Text color="quaternary" fontSize="text">Presented by NeuroGecko</Text>
+        </FlexBox>
+      </Slide>
+
+      {/* Slide 2: Architecture (Mermaid) */}
+      <Slide backgroundColor="secondary">
+        <Heading fontSize="h3" color="tertiary">Pathway Architecture</Heading>
+        <Text color="primary">The "Presentation-as-Code" Stack</Text>
+        <Mermaid chart={`
+          graph LR
+          A[Next.js 15] -->|Renders| B(Spectacle Deck)
+          B -->|Lazy Loads| C{SafeBrain}
+          C -->|COOP/COEP| D[SharedArrayBuffer]
+          D -->|WebGL2| E[Niivue Canvas]
+          style A fill:#1e293b,stroke:#38bdf8,stroke-width:2px,color:#f1f5f9
+          style B fill:#1e293b,stroke:#38bdf8,stroke-width:2px,color:#f1f5f9
+          style C fill:#334155,stroke:#38bdf8,stroke-width:2px,color:#f1f5f9
+          style D fill:#334155,stroke:#38bdf8,stroke-width:2px,color:#f1f5f9
+          style E fill:#0f172a,stroke:#38bdf8,stroke-width:2px,color:#f1f5f9
+        `} />
+      </Slide>
+
+      {/* Slide 3: The Challenge */}
+      <Slide backgroundColor="secondary">
+        <Heading fontSize="h3" color="tertiary">The WebGL Constraint</Heading>
+        <FlexBox flexDirection="column" alignItems="flex-start" padding="20px">
+          <Text color="primary">Why traditional decks fail with Neuroimaging:</Text>
+          <UnorderedList color="primary">
+            <Appear><ListItem>Browser Context Limit (~16 WebGL contexts)</ListItem></Appear>
+            <Appear><ListItem>Memory Leaks from large NIfTI volumes</ListItem></Appear>
+            <Appear><ListItem>Security Headers (COOP/COEP) breaking iframes</ListItem></Appear>
+            <Appear><ListItem><strong>Solution:</strong> Lazy-loading and strict disposal.</ListItem></Appear>
+          </UnorderedList>
+        </FlexBox>
+      </Slide>
+
+      {/* Slide 4: Live Code */}
+      <Slide backgroundColor="secondary">
+        <Heading fontSize="h3" color="tertiary">Live Code Demo</Heading>
+        <Text color="quaternary" fontSize="text">Editable React Components in Slide</Text>
+        <LiveCode 
+          code={`// Interactive Component Logic
+const BrainState = () => {
+  const [active, setActive] = useState(false);
+  return (
+    <button 
+      onClick={() => setActive(!active)}
+      style={{ 
+        background: active ? '#38bdf8' : '#334155',
+        padding: '1rem',
+        borderRadius: '0.5rem',
+        color: 'white' 
+      }}
+    >
+      Cortex Status: {active ? 'FIRING' : 'RESTING'}
+    </button>
+  );
+}`} 
         />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+      </Slide>
+
+      {/* Slide 5: Patient Data */}
+      <Slide backgroundColor="secondary">
+        <Heading fontSize="h3" color="tertiary">Temporal Analysis</Heading>
+        <Text color="primary">Patient 001 - Signal Response</Text>
+        <DataChart />
+      </Slide>
+
+      {/* Slide 6: Neuroimaging Intro */}
+      <Slide backgroundColor="secondary">
+        <FlexBox height="100%" flexDirection="column" alignItems="center" justifyContent="center">
+          <Heading fontSize="h2" color="tertiary">Structural Imaging</Heading>
+          <Text color="primary">High-Performance WebGL2 Rendering</Text>
+          <div className="h-1 w-24 bg-sky-400 mt-8 rounded"></div>
+        </FlexBox>
+      </Slide>
+
+      {/* Slide 7: Interactive MRI */}
+      <Slide backgroundColor="secondary">
+        <Heading fontSize="h3" color="tertiary">Subject MNI152</Heading>
+        <Box padding="10px">
+           {/* Using a reliable CDN for the example NIfTI */}
+           <SafeBrain url="https://niivue.github.io/niivue-demo-images/mni152.nii.gz" />
+        </Box>
+      </Slide>
+
+      {/* Slide 8: Video Analysis */}
+      <Slide backgroundColor="secondary">
+        <Heading fontSize="h3" color="tertiary">Volumetric Video</Heading>
+        <FlexBox justifyContent="center" alignItems="center" height="500px">
+            {/* Standard HTML video to test headers */}
+            <video 
+                controls 
+                className="w-full h-full rounded-xl border border-slate-700 shadow-2xl"
+                crossOrigin="anonymous"
             >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+                <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+            </video>
+        </FlexBox>
+      </Slide>
+
+      {/* Slide 9: Interactive Poll */}
+      <Slide backgroundColor="secondary">
+        <Heading fontSize="h3" color="tertiary">Audience Feedback</Heading>
+        <Text color="primary">Which modality shows the most promise?</Text>
+        <Box padding="20px">
+            <Poll />
+        </Box>
+      </Slide>
+
+      {/* Slide 10: Conclusion */}
+      <Slide backgroundColor="secondary">
+        <FlexBox height="100%" flexDirection="column" alignItems="center" justifyContent="center">
+          <Heading fontSize="h2" color="tertiary">Thank You</Heading>
+          <Text color="primary">NeuroGecko v1.0</Text>
+          <Box padding="20px" className="flex flex-col gap-4 items-center">
+            <Text fontSize="24px" color="quaternary">github.com/brbrainerd/neurogecko</Text>
+            <Text fontSize="24px" color="quaternary">Deployed on Vercel Edge Network</Text>
+          </Box>
+        </FlexBox>
+      </Slide>
+
+    </Deck>
   );
 }
