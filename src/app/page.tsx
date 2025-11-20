@@ -20,6 +20,7 @@ import { Mermaid } from '@/components/Mermaid';
 import { DataChart } from '@/components/DataChart';
 import { Poll } from '@/components/Poll';
 import { LiveCode } from '@/components/LiveCode';
+import { DEMO_ASSETS, SITE_CONFIG } from '@/lib/constants';
 import React from 'react';
 
 // Custom Dark Neuroscience Theme
@@ -147,7 +148,7 @@ const BrainState = () => {
         <Heading fontSize="h3" color="tertiary">Subject MNI152</Heading>
         <Box padding="10px">
            {/* Using a reliable CDN for the example NIfTI */}
-           <SafeBrain url="https://niivue.github.io/niivue-demo-images/mni152.nii.gz" />
+           <SafeBrain url={DEMO_ASSETS.BRAIN_MNI152} />
         </Box>
       </Slide>
 
@@ -161,7 +162,7 @@ const BrainState = () => {
                 className="w-full h-full rounded-xl border border-slate-700 shadow-2xl"
                 crossOrigin="anonymous"
             >
-                <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4" />
+                <source src={DEMO_ASSETS.VIDEO_BUNNY} type="video/mp4" />
                 Your browser does not support the video tag.
             </video>
         </FlexBox>
@@ -182,7 +183,7 @@ const BrainState = () => {
           <Heading fontSize="h2" color="tertiary">Thank You</Heading>
           <Text color="primary">NeuroGecko v1.0</Text>
           <Box padding="20px" className="flex flex-col gap-4 items-center">
-            <Text fontSize="24px" color="quaternary">github.com/brbrainerd/neurogecko</Text>
+            <Text fontSize="24px" color="quaternary">{SITE_CONFIG.repo}</Text>
             <Text fontSize="24px" color="quaternary">Deployed on Vercel Edge Network</Text>
           </Box>
         </FlexBox>
