@@ -25,4 +25,3 @@ export const Mermaid = ({ chart }: { chart: string }) => {
     </div>
   );
 };
-

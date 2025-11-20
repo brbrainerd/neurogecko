@@ -5,7 +5,7 @@ import dynamic from 'next/dynamic';
 import { Loader2 } from 'lucide-react';
 
 // Dynamically import Niivue to avoid Server-Side Rendering (SSR) errors
-const NiivueCanvas = dynamic(() => import('./NiivueWrapper'), { 
+const NiivueCanvas = dynamic(() => import('./NiivueWrapper'), {
   ssr: false,
   loading: () => (
     <div className="flex items-center justify-center h-full bg-slate-900 text-slate-400">
@@ -16,7 +16,7 @@ const NiivueCanvas = dynamic(() => import('./NiivueWrapper'), {
 });
 
 export const SafeBrain = ({ url }: { url: string }) => {
-  // In a real Spectacle deck, we would use the 'useSteps' hook or similar 
+  // In a real Spectacle deck, we would use the 'useSteps' hook or similar
   // to detect if this slide is active, but for simplicity, we render on mount.
   return (
     <div className="h-[60vh] w-full border border-slate-700 rounded-xl overflow-hidden relative bg-black shadow-2xl">
@@ -27,4 +27,3 @@ export const SafeBrain = ({ url }: { url: string }) => {
     </div>
   );
 };
-

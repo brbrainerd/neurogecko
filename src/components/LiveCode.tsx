@@ -11,8 +11,8 @@ interface LiveCodeProps {
 export const LiveCode = ({ code, language = "tsx", showLineNumbers = true }: LiveCodeProps) => {
   return (
     <div className="rounded-xl overflow-hidden shadow-2xl border border-slate-700 text-sm">
-      <CodePane 
-        language={language} 
+      <CodePane
+        language={language}
         showLineNumbers={showLineNumbers}
       >
         {code}
@@ -20,4 +20,3 @@ export const LiveCode = ({ code, language = "tsx", showLineNumbers = true }: Liv
     </div>
   );
 };
-

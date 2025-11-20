@@ -29,7 +29,7 @@ export const Poll = () => {
           </button>
         ))}
       </div>
-      
+
       <div className="w-full h-full bg-slate-900/50 p-4 rounded-xl border border-slate-800">
         <ResponsiveContainer width="100%" height="100%">
           <BarChart data={votes}>
@@ -47,4 +47,3 @@ export const Poll = () => {
     </div>
   );
 };
-

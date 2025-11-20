@@ -1,17 +1,17 @@
 'use client';
 
-import { 
-  Deck, 
-  Slide, 
-  Heading, 
-  Text, 
-  FlexBox, 
-  Box, 
-  FullScreen, 
-  Progress, 
-  UnorderedList, 
-  ListItem, 
-  Appear, 
+import {
+  Deck,
+  Slide,
+  Heading,
+  Text,
+  FlexBox,
+  Box,
+  FullScreen,
+  Progress,
+  UnorderedList,
+  ListItem,
+  Appear,
   CodePane,
   Image
 } from 'spectacle';
@@ -59,7 +59,7 @@ const template = () => (
 export default function Presentation() {
   return (
     <Deck theme={theme} template={template}>
-      
+
       {/* Slide 1: Title */}
       <Slide backgroundColor="secondary">
         <FlexBox height="100%" flexDirection="column" alignItems="center" justifyContent="center">
@@ -105,24 +105,24 @@ export default function Presentation() {
       <Slide backgroundColor="secondary">
         <Heading fontSize="h3" color="tertiary">Live Code Demo</Heading>
         <Text color="quaternary" fontSize="text">Editable React Components in Slide</Text>
-        <LiveCode 
+        <LiveCode
           code={`// Interactive Component Logic
 const BrainState = () => {
   const [active, setActive] = useState(false);
   return (
-    <button 
+    <button
       onClick={() => setActive(!active)}
-      style={{ 
+      style={{
         background: active ? '#38bdf8' : '#334155',
         padding: '1rem',
         borderRadius: '0.5rem',
-        color: 'white' 
+        color: 'white'
       }}
     >
       Cortex Status: {active ? 'FIRING' : 'RESTING'}
     </button>
   );
-}`} 
+}`}
         />
       </Slide>
 
@@ -156,8 +156,8 @@ const BrainState = () => {
         <Heading fontSize="h3" color="tertiary">Volumetric Video</Heading>
         <FlexBox justifyContent="center" alignItems="center" height="500px">
             {/* Standard HTML video to test headers */}
-            <video 
-                controls 
+            <video
+                controls
                 className="w-full h-full rounded-xl border border-slate-700 shadow-2xl"
                 crossOrigin="anonymous"
             >

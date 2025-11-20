@@ -37,7 +37,7 @@ export const DataChart = () => {
           <CartesianGrid strokeDasharray="3 3" stroke="#334155" />
           <XAxis dataKey="time" stroke="#94a3b8" />
           <YAxis stroke="#94a3b8" />
-          <Tooltip 
+          <Tooltip
             contentStyle={{ backgroundColor: '#0f172a', borderColor: '#334155', color: '#f1f5f9' }}
           />
           <Legend />
@@ -48,4 +48,3 @@ export const DataChart = () => {
     </div>
   );
 };
-
