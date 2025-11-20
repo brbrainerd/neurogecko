@@ -58,7 +58,7 @@ const template = () => (
 
 export default function Presentation() {
   return (
-    <Deck theme={theme} template={template} transition={{ duration: 500 }}>
+    <Deck theme={theme} template={template}>
       
       {/* Slide 1: Title */}
       <Slide backgroundColor="secondary">

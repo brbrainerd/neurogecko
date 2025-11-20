@@ -16,7 +16,6 @@ const NiivueWrapper = ({ url }: NiivueWrapperProps) => {
       loadingText: 'Loading Brain Scan...',
       backColor: [0, 0, 0, 1],
       // optimizing for context loss
-      glContextBehavior: 'lose' 
     });
     
     nv.attachToCanvas(canvasRef.current);
